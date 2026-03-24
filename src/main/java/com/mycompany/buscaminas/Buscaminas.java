@@ -4,13 +4,10 @@
 
 package com.mycompany.buscaminas;
 
-/**
- *
- * @author legon
- */
 public class Buscaminas {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        JuegoBuscaminas juego = new JuegoBuscaminas();
+        juego.iniciar();
     }
 }
