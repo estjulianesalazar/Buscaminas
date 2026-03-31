@@ -5,14 +5,25 @@
 package com.mycompany.buscaminas;
 
 import com.murcia.utils.ListaEnlazada;
+import java.util.Random;
+
 public class Tablero {
-    private ListaEnlazada<Celda> celdas;
+    
+    private ListaEnlazada<Celda> casillas;
     private int filas = 16;
     private int columnas = 16;
     private int minas = 40;
     
-    public Tablero(){
+    public Tablero(int filas, int columnas, int minas){
+        this.filas = filas;
+        this.columnas = columnas;
+        this.minas = minas;
         
+        casillas = new ListaEnlazada<>();
+        
+        generarTablero();
+        colocarMinas();
+        calcularMinas();
     }
     
     public void inicializar(){
