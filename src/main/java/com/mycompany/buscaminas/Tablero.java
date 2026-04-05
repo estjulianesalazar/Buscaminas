@@ -10,9 +10,9 @@ import java.util.Random;
 public class Tablero {
     
     private ListaEnlazada<Celda> casillas;
-    private int filas = 16;
-    private int columnas = 16;
-    private int minas = 40;
+    private int filas;
+    private int columnas;
+    private int minas;
     
     public Tablero(int filas, int columnas, int minas){
         this.filas = filas;
@@ -23,26 +23,34 @@ public class Tablero {
         
         generarTablero();
         colocarMinas();
-        calcularMinas();
+        calcularMinasAlrededor();
     }
     
-    public void inicializar(){
-        
+    private void generarTablero(){
+        for (int i = 0; i < filas * columnas; i++){
+            casillas.add(new Celda());
+        }
     }
     
-    private void generarMinas(){
-        
+    public Celda obtenerCasilla(int fila, int columna){
+        int pos = fila * columnas + columna;
+        return casillas.get(pos);
     }
-    private void calcularAdyacentes(){
-        
+    private void colocarMinas(){
+        Random r = new Random();
+        int colocadas = 0;
+    
+        while(colocadas < minas){
+            int pos = r.nextInt(filas * columnas);
+            Celda c = casillas.get(pos);
+            
+            if(!c.tieneMina()){
+                c.colocarMina();
+                colocadas++;
+            }
+        }
     }
     
-    public Celda obtenerCelda(int fila, int columna){
-        return null;
-    }
-    public void revelar(int fila, int columna){
-        
-    }
     public void marcar(int fila,int columna){
         
     }
