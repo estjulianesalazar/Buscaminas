@@ -42,22 +42,15 @@ public class Celda {
     public void quitarBandera(){
         bandera = false;
     }
-    public void desmarcar(){
-        
+    public boolean tieneBandera(){
+        return bandera;
     }
     
-    public int getAdyacentes(){
-        return 0;
+    public int getMinasAlrededor(){
+        return minasAlrededor;
     }
     
-    public void setAdyacentes(int n){
-        
-    }
-    
-    public int getFila(){
-        return 0;
-    }
-    public int getColumna(){
-        return 0;
+    public void setMinasAlrededor(int minas){
+        minasAlrededor = minas;
     }
 }
