@@ -5,35 +5,42 @@
 package com.mycompany.buscaminas;
 
 public class Celda {
-    private int fila;
-    private int columna;
-    private boolean revelada;
-    private boolean marcada;
-    private int adyacentes;
     
-    public Celda(int fila, int columna){
-        
-    }
-    public boolean esMina(){
-        return false;
-    }
-    public void setMina(boolean mina){
-        
+    private boolean mina;
+    private boolean descubierta;
+    private boolean bandera;
+    private int minasAlrededor;
+    
+    public Celda(){
+        mina = false;
+        descubierta = false;
+        bandera = false;
+        minasAlrededor = 0;
     }
     
-    public boolean isRevelada(){
-        return false;
+    public boolean tieneMina(){
+        return mina;
+    }
+    public void colocarMina(){
+        mina = true;
     }
     
-    public boolean revelar(){
-        return false;
+    public void descubrir(){
+        if (!bandera){
+            descubierta = true;
+        }
+    }
+    
+    public boolean estaDescubierta(){
+        return descubierta;
     }
 
-    public boolean isMarcada(){
-        return false;
+    public void colocarBandera(){
+        bandera = true;
     }
-    public void marcar(){
-        
+    
+    public void quitarBandera(){
+        bandera = false;
     }
     public void desmarcar(){
         
