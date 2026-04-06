@@ -5,31 +5,40 @@
 package com.mycompany.buscaminas;
 
 public class JuegoBuscaminas {
+    
+    private int puntaje;
+    private int banderasColocadas;
     private Tablero tablero;
-    private boolean terminado;
-    private boolean ganado;
+    private Jugador jugador;
     
-    public JuegoBuscaminas(){
-        
-    }
-    
-    public void iniciar(){
-        
+    public JuegoBuscaminas(Tablero tablero, Jugador jugador){
+        this.tablero = tablero;
+        this.jugador = jugador;
     }
     
-    public void jugar(int fila, int columna){
-        
+    public void colocarBandera(int f, int c){
+        Celda cel = tablero.obtenerCasilla(f, c);
+     
+        if (!cel.estaDescubierta() && !cel.tieneBandera()){
+            cel.colocarBandera();
+            banderasColocadas++;
+            jugador.colocarBandera();
+        }
     }
-    public void marcar(int fiila, int columna){
-        
+    
+    public void quitarBandera(int f, int c){
+       Celda cel = tablero.obtenerCasilla(f, c);
+       
+       if (cel.tieneBandera()){
+           cel.quitarBandera();
+           banderasColocadas--;
+           jugador.quitarBandera();
+        }
     }
-    private void verificarEstado(){
-        
-    }
-    public boolean isTerminado(){
-        return false;
-    }
-    public boolean isGanado(){
-        return false;
+    
+    public void EstadoJuego(){
+        System.out.println("Jugador: " + jugador.getNombre());
+        System.out.println("Puntaje: " + jugador.getPuntaje());
+        System.out.println("Banderas: " + banderasColocadas); 
     }
 }
