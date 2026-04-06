@@ -40,6 +40,24 @@ public class Buscaminas {
                  case '1':
                      f = Input.nextInt("Fila:", 0, 4);
                      c = Input.nextInt("Columna:", 0, 4);
+                     tablero.descubrirCasilla(f, c);
+                     break;
+                     
+                 case '2':
+                     f = Input.nextInt("Fila:", 0, 4);
+                     c = Input.nextInt("Columna:", 0, 4);
+                     juego.colocarBandera(f, c);
+                     break;
+                     
+                 case '3':
+                     f = Input.nextInt("Fila:", 0, 4);
+                     c = Input.nextInt("Columna:", 0, 4);
+                     juego.quitarBandera(f, c);
+                     break;
+                     
+                 case '4':
+                     salir = true;
+                     break;
              }
          }
      }
