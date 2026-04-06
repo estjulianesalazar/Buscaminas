@@ -50,8 +50,62 @@ public class Tablero {
             }
         }
     }
-    
-    public void marcar(int fila,int columna){
-        
+    public void calcularMinasAlrededor() {
+        for (int f = 0; f < filas; f++){
+            for (int c = 0; c < columnas; c++){
+                
+                int contador = 0;
+                
+                for (int i = -1; i <= 1; i++) {
+                    for (int j = -1; j <= 1; j++){
+                        
+                        int nf = f + i;
+                        int nc = c + j;
+                        
+                        if (nf >= 0 && nf < filas && nc >= 0 && nc < columnas)
+                            if (obtenerCasilla(nf, nc).tieneMina()){
+                                contador++;
+                            }
+                    }
+                }
+            }
+            
+        obtenerCasilla(f, c).setMinasAlrededor(contador);
+        }
     }
 }
+
+public void descubrirCasilla(int fila, int columna){
+    Celda c = obtenerCasilla(fila, columna);
+    c.descubrir();
+    
+    if (c.tieneMina()){
+        System.out.println("!Pisaste una Mina¡");
+    }
+}
+
+public void mostrarTablero(){
+    
+    for (int f = 0; f < filas; f++){
+        for (int c = 0; c < columnas; c++){
+            
+            Celda cel = obtenerCasilla(f, c);
+            
+            if(!cel.estaDescubierta()){
+                if (cel.tieneBandera()){
+                    System.out.print("B ");
+                } else {
+                    System.out.print(". ");
+                }
+            } else {
+                if (cel.tieneMina()){
+                    System.out.print("* ");
+                } else {
+                    System.out.print(cel.getMinasAlrededor() + " ");
+                }
+            }
+        }
+        System.out.println();
+    }
+}
+
