@@ -1,44 +1,46 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.buscaminas;
-
+ 
 public class JuegoBuscaminas {
-    
-    private int puntaje;
+ 
     private int banderasColocadas;
     private Tablero tablero;
     private Jugador jugador;
-    
-    public JuegoBuscaminas(Tablero tablero, Jugador jugador){
+ 
+    public JuegoBuscaminas(Tablero tablero, Jugador jugador) {
         this.tablero = tablero;
         this.jugador = jugador;
+        this.banderasColocadas = 0;
     }
-    
-    public void colocarBandera(int f, int c){
+ 
+    public void colocarBandera(int f, int c) {
         Celda cel = tablero.obtenerCasilla(f, c);
-     
-        if (!cel.estaDescubierta() && !cel.tieneBandera()){
+ 
+        if (!cel.estaDescubierta() && !cel.tieneBandera()) {
             cel.colocarBandera();
             banderasColocadas++;
             jugador.colocarBandera();
+        } else if (cel.estaDescubierta()) {
+            System.out.println("No puedes colocar una bandera en una casilla descubierta.");
+        } else {
+            System.out.println("Ya hay una bandera en esa casilla.");
         }
     }
-    
-    public void quitarBandera(int f, int c){
-       Celda cel = tablero.obtenerCasilla(f, c);
-       
-       if (cel.tieneBandera()){
-           cel.quitarBandera();
-           banderasColocadas--;
-           jugador.quitarBandera();
+ 
+    public void quitarBandera(int f, int c) {
+        Celda cel = tablero.obtenerCasilla(f, c);
+ 
+        if (cel.tieneBandera()) {
+            cel.quitarBandera();
+            banderasColocadas--;
+            jugador.quitarBandera();
+        } else {
+            System.out.println("No hay bandera en esa casilla.");
         }
     }
-    
-    public void EstadoJuego(){
+ 
+    public void estadoJuego() {
         System.out.println("Jugador: " + jugador.getNombre());
         System.out.println("Puntaje: " + jugador.getPuntaje());
-        System.out.println("Banderas: " + banderasColocadas); 
+        System.out.println("Banderas colocadas: " + banderasColocadas);
     }
 }

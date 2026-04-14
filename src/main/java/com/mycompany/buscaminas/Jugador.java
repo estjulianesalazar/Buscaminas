@@ -1,25 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.buscaminas;
-
+ 
 public class Jugador {
+ 
     private String nombre;
     private int puntaje;
-    
-    public Jugador(String nombre){
+    private int banderasColocadas;
+ 
+    public Jugador(String nombre) {
         this.nombre = nombre;
         this.puntaje = 0;
+        this.banderasColocadas = 0;
     }
-    public String getNombre(){
+ 
+    public String getNombre() {
         return nombre;
     }
-    public int getPuntaje(){
+ 
+    public int getPuntaje() {
         return puntaje;
     }
-    public void sumarPuntos(int puntos){
+ 
+    public void sumarPuntos(int puntos) {
         puntaje += puntos;
     }
-    
+ 
+    public void colocarBandera() {
+        banderasColocadas++;
+    }
+ 
+    public void quitarBandera() {
+        if (banderasColocadas > 0) {
+            banderasColocadas--;
+        }
+    }
+ 
+    public int getBanderasColocadas() {
+        return banderasColocadas;
+    }
 }

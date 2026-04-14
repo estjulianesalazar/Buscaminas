@@ -56,10 +56,8 @@ public class Tablero {
  
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
- 
                         int nf = f + i;
                         int nc = c + j;
- 
                         if (nf >= 0 && nf < filas && nc >= 0 && nc < columnas) {
                             if (obtenerCasilla(nf, nc).tieneMina()) {
                                 contador++;
@@ -67,7 +65,6 @@ public class Tablero {
                         }
                     }
                 }
- 
                 obtenerCasilla(f, c).setMinasAlrededor(contador);
             }
         }
